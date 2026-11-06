@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HADI Bridge · Firmware updater</title>
+<meta name="description" content="Load the HADI Bridge firmware onto an RP2350-USB-A board from your browser.">
+<meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0f13" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="3"/><rect x="9" y="0.5" width="6" height="4" rx="1"/><rect x="8.5" y="9" width="7" height="7" rx="1.2"/></svg>
+      </span>
+      HADI Bridge
+    </div>
+    <span class="chip-tag">Firmware · Oct 22, 2026</span>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- Hero: intro + 3D board -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Firmware updater</p>
+      <h1>Set up your bridge board in about a minute.</h1>
+      <p class="lead">This page loads the HADI Bridge software onto the little <strong>RP2350-USB-A</strong> board that connects your HADI to the iPhone. There's nothing to install or solder.</p>
+      <ul class="facts">
+        <li><span class="ic">⏱</span>About 10 seconds to flash</li>
+        <li><span class="ic">🌐</span>Chrome, Edge or Brave on a computer</li>
+        <li><span class="ic">🔒</span>Nothing is uploaded anywhere</li>
+      </ul>
+      <a class="btn ghost" href="#step-1">Start the guide ↓</a>
+    </div>
+
+    <figure class="board-card">
+      <div id="stage" class="stage" aria-label="3D model of the RP2350-USB-A board. Drag to rotate." role="img"></div>
+      <figcaption>
+        <div class="legend" role="group" aria-label="Find a part on the board">
+          <button data-show="usbc">USB-C</button>
+          <button data-show="usba">USB-A</button>
+          <button data-show="boot">BOOT</button>
+          <button data-show="rst">RST</button>
+          <button data-show="chip">Chip</button>
+          <button data-show="led">LED</button>
+          <button data-show="pins">Pins</button>
+        </div>
+        <p id="part-info" class="part-info" aria-live="polite"></p>
+      </figcaption>
+    </figure>
+  </section>
+
+  <div id="unsupported" class="notice bad" hidden>
+    <strong>This browser can't flash the board.</strong>
+    Open this page in <strong>Chrome, Edge or Brave</strong> on a Windows, Mac, Linux or Chromebook computer
+    (not Safari, Firefox or a phone). Or use <a href="#manual">drag and drop</a>, which works in any browser.
+  </div>
+
+  <!-- Guide -->
+  <section class="guide" aria-label="Steps">
+
+    <article class="step" id="step-1" data-highlight="usbc">
+      <div class="art">
+        <svg viewBox="0 0 240 150" aria-hidden="true">
+          <rect class="desk" x="0" y="0" width="240" height="150" rx="14"/>
+          <g transform="translate(70 40)">
+            <rect class="pcb2d" x="0" y="0" width="100" height="56" rx="6"/>
+            <rect class="metal2d" x="-12" y="16" width="22" height="24" rx="3"/>
+            <rect class="metal2d" x="70" y="10" width="40" height="36" rx="3"/>
+            <rect class="chip2d" x="34" y="16" width="24" height="24" rx="3"/>
+          </g>
+          <g class="pull">
+            <rect class="cable" x="4" y="63" width="34" height="8" rx="4"/>
+            <rect class="plug" x="34" y="58" width="16" height="18" rx="3"/>
+          </g>
+          <g class="pull2">
+            <rect class="plug" x="190" y="54" width="16" height="26" rx="3"/>
+            <rect class="cable" x="204" y="62" width="34" height="10" rx="5"/>
+          </g>
+          <text class="cap2d" x="120" y="132" text-anchor="middle">Nothing plugged in</text>
+        </svg>
+      </div>
+      <div class="body">
+        <span class="num">1</span>
+        <h2>Unplug the board</h2>
+        <p>Take the board off everything: the iPhone, the HADI cable, any power.</p>
+      </div>
+    </article>
+
+    <article class="step" id="step-2" data-highlight="boot">
+      <div class="art">
+        <svg viewBox="0 0 240 150" aria-hidden="true">
+          <rect class="desk" x="0" y="0" width="240" height="150" rx="14"/>
+          <g transform="translate(88 36)">
+            <rect class="pcb2d" x="0" y="0" width="100" height="56" rx="6"/>
+            <rect class="metal2d" x="-12" y="16" width="22" height="24" rx="3"/>
+            <rect class="metal2d" x="70" y="10" width="40" height="36" rx="3"/>
+            <rect class="chip2d" x="34" y="16" width="24" height="24" rx="3"/>
+            <rect class="btn2d dimmed" x="16" y="5" width="11" height="11" rx="2"/>
+            <rect class="btn2d" x="16" y="40" width="11" height="11" rx="2"/>
+            <circle class="press" cx="21.5" cy="45.5" r="14"/>
+            <text class="lbl2d" x="21.5" y="76" text-anchor="middle">hold BOOT</text>
+          </g>
+          <g class="plugin">
+            <rect class="cable" x="2" y="59" width="44" height="10" rx="5"/>
+            <rect class="plug" x="44" y="54" width="22" height="20" rx="3"/>
+          </g>
+          <path class="arrow" d="M 50 100 h 22 m -6 -6 l 6 6 l -6 6"/>
+          <text class="cap2d" x="120" y="132" text-anchor="middle">Hold, plug in, then let go</text>
+        </svg>
+      </div>
+      <div class="body">
+        <span class="num">2</span>
+        <h2>Hold BOOT, plug into this computer</h2>
+        <p>Press and hold the <strong>BOOT</strong> button (it's next to the USB-C port), plug the USB-C cable into this computer, then let go.</p>
+        <p class="status-line" id="board" role="status"></p>
+      </div>
+    </article>
+
+    <article class="step flash-step" id="step-3" data-highlight="chip">
+      <div class="art">
+        <div class="mock-dialog" aria-hidden="true">
+          <div class="md-title">This site wants to connect</div>
+          <div class="md-item"><span class="usb-ic"></span>RP2350 Boot</div>
+          <div class="md-actions"><span>Cancel</span><span class="md-connect">Connect</span></div>
+        </div>
+      </div>
+      <div class="body">
+        <span class="num">3</span>
+        <h2>Flash the firmware</h2>
+        <p>Click the button, pick <strong>RP2350 Boot</strong> in the box that pops up, and click <strong>Connect</strong>.</p>
+
+        <button id="flash" class="btn primary big" disabled>
+          <span class="btn-label">Flash firmware</span>
+        </button>
+
+        <ol id="progress" class="progress" aria-live="polite" hidden>
+          <li data-step="connect">Connect</li>
+          <li data-step="write">Write</li>
+          <li data-step="verify">Check</li>
+          <li data-step="reboot">Restart</li>
+        </ol>
+
+        <div id="result" role="status" hidden></div>
+      </div>
+    </article>
+
+    <article class="step" id="step-4" data-highlight="usba">
+      <div class="art">
+        <svg viewBox="0 0 240 150" aria-hidden="true">
+          <rect class="desk" x="0" y="0" width="240" height="150" rx="14"/>
+          <!-- phone -->
+          <rect class="phone" x="14" y="26" width="44" height="84" rx="9"/>
+          <rect class="screen" x="18" y="32" width="36" height="72" rx="6"/>
+          <text class="num2d" x="36" y="64" text-anchor="middle">1000.0</text>
+          <text class="unit2d" x="36" y="76" text-anchor="middle">lbf</text>
+          <path class="wire" d="M 36 110 C 36 135, 78 132, 82 92 L 82 78"/>
+          <g transform="translate(70 30) ">
+            <rect class="pcb2d" x="0" y="8" width="56" height="88" rx="6"/>
+            <rect class="metal2d" x="16" y="0" width="24" height="16" rx="3"/>
+            <rect class="metal2d" x="8" y="70" width="40" height="34" rx="3"/>
+            <rect class="chip2d" x="18" y="38" width="20" height="20" rx="3"/>
+          </g>
+          <!-- HADI -->
+          <path class="wire" d="M 98 134 C 110 146, 150 140, 168 112"/>
+          <rect class="hadi" x="152" y="40" width="74" height="72" rx="10"/>
+          <rect class="hadi-lcd" x="161" y="52" width="56" height="22" rx="3"/>
+          <text class="lcd2d" x="189" y="68" text-anchor="middle">1000.0</text>
+          <circle class="knob" cx="172" cy="94" r="5"/><circle class="knob" cx="189" cy="94" r="5"/><circle class="knob" cx="206" cy="94" r="5"/>
+          <text class="lbl2d" x="98" y="20" text-anchor="middle">USB-C ↑ iPhone</text>
+          <text class="lbl2d" x="189" y="30" text-anchor="middle">HADI</text>
+        </svg>
+      </div>
+      <div class="body">
+        <span class="num">4</span>
+        <h2>Connect it up</h2>
+        <p>Unplug it from the computer. Plug the <strong>USB-C</strong> side into the iPhone and the HADI's USB cable into the <strong>USB-A</strong> port, then open <strong>HADI Bridge</strong> on the phone.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- Help -->
+  <section class="help">
+    <h2>Need help?</h2>
+
+    <details id="manual">
+      <summary>Can't use Chrome? Drag and drop instead</summary>
+      <div class="det">
+        <ol>
+          <li><a id="download" href="hadi_bridge.uf2" download>Download the firmware file</a> (<span id="fwsize">about 220 KB</span>).</li>
+          <li>Unplug the board, hold <strong>BOOT</strong>, plug it into the computer and let go. A drive named <strong>RP2350</strong> appears.</li>
+          <li>Drag the downloaded file onto that drive. It copies for a second, the drive disappears, and the board restarts by itself.</li>
+        </ol>
+      </div>
+    </details>
+
+    <details>
+      <summary>"RP2350 Boot" isn't in the list</summary>
+      <div class="det">
+        <p>The board isn't in BOOT mode yet. Unplug it, hold <strong>BOOT</strong> <em>before</em> the cable goes in, and keep holding until it's plugged in.
+        Some USB-C cables only carry power: if it still doesn't show up, try another cable or port.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Could this break the board?</summary>
+      <div class="det">
+        <p>No. The part of the chip that loads firmware is built in and can't be erased, so you can always start again at step 1.
+        The page also reads the firmware back after writing it to check it was saved correctly.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Which board is this for?</summary>
+      <div class="det">
+        <p>The Waveshare <strong>RP2350-USB-A</strong> (33 × 17.5 mm, one USB-C and one USB-A port). Other RP2350 boards will accept the file
+        but won't work as a bridge, because the HADI port is the USB-A connector.</p>
+      </div>
+    </details>
+  </section>
+
+  <footer class="foot">
+    Firmware built Oct 22, 2026. Flashing uses the chip's built-in bootloader over WebUSB, with
+    <a href="https://github.com/piersfinlayson/picoflash">picoflash</a> (MIT license). The firmware file stays in your browser.
+  </footer>
+</main>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
