@@ -107,14 +107,17 @@ async function loadFirmware() {
 }
 
 // The 3D board, and the buttons and steps that point at its parts
-const board = mountBoard($('stage'), $('part-info'));
-document.querySelectorAll('[data-show]').forEach((b) => {
-    b.addEventListener('click', () => board.highlight(board.active === b.dataset.show ? null : b.dataset.show));
-});
-document.querySelectorAll('.step[data-highlight]').forEach((s) => {
-    s.addEventListener('mouseenter', () => board.highlight(s.dataset.highlight));
-    s.addEventListener('mouseleave', () => board.highlight(null));
-});
+// (only when the board is on the page)
+if ($('stage')) {
+    const board = mountBoard($('stage'), $('part-info'));
+    document.querySelectorAll('[data-show]').forEach((b) => {
+        b.addEventListener('click', () => board.highlight(board.active === b.dataset.show ? null : b.dataset.show));
+    });
+    document.querySelectorAll('.step[data-highlight]').forEach((s) => {
+        s.addEventListener('mouseenter', () => board.highlight(s.dataset.highlight));
+        s.addEventListener('mouseleave', () => board.highlight(null));
+    });
+}
 
 if (!hasWebUsb) {
     $('unsupported').hidden = false;

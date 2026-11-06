@@ -40,6 +40,11 @@ a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
 
+/* ---- top ---- */
+.top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 22px; padding-bottom: 4px; }
+.top .title { font-size: 15px; font-weight: 650; letter-spacing: -.01em; }
+.top .date { font-size: 13px; color: var(--muted); }
+
 /* ---- hero ---- */
 .hero { display: grid; grid-template-columns: 1fr 1.05fr; gap: 40px; align-items: center; padding: 48px 0 28px; }
 .eyebrow { margin: 0 0 8px; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
